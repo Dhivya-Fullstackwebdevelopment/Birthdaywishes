@@ -18,15 +18,58 @@ body {
 
 .scene {
   perspective: 2000px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
 .card {
-  width: 340px;
+  /* Using max-width ensures it doesn't get too big, 
+     but width: 90% lets it shrink on small phones */
+  width: 100%;
+  max-width: 340px;
   height: 480px;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+}
+
+@media (max-width: 375px) {
+  .card {
+    height: 420px;
+    /* Slightly shorter for small phones */
+  }
+
+  .main-title {
+    font-size: 1.2rem;
+  }
+
+  .gift-img-main {
+    width: 110px;
+    /* Scale down image on small screens */
+  }
+
+  .gold-text {
+    font-size: 1.4rem;
+  }
+
+  .real-cake-img {
+    width: 100px;
+  }
+}
+
+/* Ensure the background and body don't scroll */
+body {
+  margin: 0;
+  height: 100dvh;
+  /* Use dynamic viewport height for mobile browsers */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .card.open {
