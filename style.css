@@ -377,3 +377,78 @@ body {
     filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.8));
   }
 }
+
+.face.front .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* This centers the gift and text horizontally */
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+.gift-img-main {
+  width: 140px;
+  /* Kept the reduced size */
+  height: auto;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5));
+  animation: pulseGift 2s infinite ease-in-out;
+  display: block;
+}
+
+.main-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.tap {
+  font-size: 0.9rem;
+  color: #d4af37;
+  text-align: center;
+  opacity: 0.8;
+}
+
+/* --- BACK DESIGN (Centered Happy Birthday) --- */
+.gold-text {
+  font-family: 'Cinzel', serif;
+  background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.6rem;
+  /* Reduced font size as requested */
+  margin: 15px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.real-cake-img {
+  width: 120px;
+  /* Reduced cake size */
+  height: auto;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6));
+  display: block;
+  margin: 0 auto;
+  /* Centers the cake */
+}
+
+.message-container {
+  padding: 0 20px;
+  min-height: 80px;
+  display: flex;
+  justify-content: center;
+  /* Centers the typing message */
+}
+
+.wish {
+  font-size: 0.9rem;
+  /* Slightly smaller text for better fit */
+  color: #f0f0f0;
+  text-align: center;
+  /* Centers the greeting message */
+  line-height: 1.5;
+}
