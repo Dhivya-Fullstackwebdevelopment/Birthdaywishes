@@ -1,126 +1,379 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400&family=Dancing+Script:wght@700&display=swap');
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #0a0a0a; /* Deep Black */
+  background: #050505;
   overflow: hidden;
   font-family: "Poppins", sans-serif;
 }
 
-.scene { perspective: 2000px; }
+.scene {
+  perspective: 2000px;
+}
 
 .card {
-  width: 320px;
-  height: 450px;
+  width: 340px;
+  height: 480px;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 }
 
-.card.open { transform: rotateY(-180deg) scale(1.05); }
+.card.open {
+  transform: rotateY(-180deg) scale(1.05);
+}
 
 .face {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 15px;
+  border-radius: 20px;
   backface-visibility: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 30px;
-  border: 1px solid rgba(255, 215, 0, 0.3);
+  border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
-/* Front Side - Matte Black & Gold Foil */
+/* --- FRONT DESIGN --- */
 .front {
-  background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
-  color: #d4af37; /* Gold */
-  box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 0 20px rgba(212, 175, 55, 0.1);
+  background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+  color: #d4af37;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9);
 }
 
-.gold-foil {
+.gift-box {
+  width: 80px;
+  height: 80px;
+  background: #d4af37;
+  position: relative;
+  margin-bottom: 30px;
+  animation: float 3s ease-in-out infinite;
+  box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+}
+
+.gift-box::before {
+  /* Horizontal Ribbon */
+  content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  border: 10px solid transparent;
-  border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Cpath d='M0 0h10v10H0z' fill='%23d4af37'/%3E%3C/svg%3E") 30 stretch;
-  opacity: 0.5;
+  width: 100%;
+  height: 15px;
+  background: #aa771c;
+  top: 32px;
 }
 
-.gift-icon { font-size: 4rem; margin-bottom: 20px; filter: drop-shadow(0 0 10px #d4af37); }
+.gift-box::after {
+  /* Vertical Ribbon */
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 15px;
+  background: #aa771c;
+  left: 32px;
+}
 
-/* Back Side */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+}
+
+.main-title {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+/* --- BACK DESIGN --- */
 .back {
   background: #0f0f0f;
   transform: rotateY(180deg);
-  box-shadow: inset 0 0 50px rgba(0,0,0,1);
 }
 
 .gold-text {
   font-family: 'Cinzel', serif;
-  background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+  background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 1.8rem;
-  margin-top: 20px;
+  font-size: 2rem;
+  margin-top: 10px;
 }
 
-/* Realistic CSS Cake */
 .cake-3d {
   position: relative;
-  width: 120px;
-  height: 100px;
+  width: 100px;
+  height: 80px;
   margin-bottom: 20px;
 }
 
 .layer {
   position: absolute;
   width: 100%;
-  border-radius: 10px;
-  background: linear-gradient(to bottom, #444, #222); /* Dark Chocolate Layers */
-  border-top: 4px solid #d4af37;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  border-radius: 8px;
+  background: #222;
+  border-top: 3px solid #d4af37;
 }
 
-.layer-bottom { height: 60px; bottom: 0; width: 120px; }
-.layer-top { height: 50px; bottom: 40px; width: 90px; left: 15px; }
+.layer-bottom {
+  height: 50px;
+  bottom: 0;
+  width: 100px;
+}
+
+.layer-top {
+  height: 40px;
+  bottom: 35px;
+  width: 70px;
+  left: 15px;
+}
 
 .candle {
   position: absolute;
-  width: 8px;
-  height: 30px;
-  background: #d4af37;
-  top: -20px;
-  left: 56px;
-  border-radius: 4px;
+  width: 6px;
+  height: 25px;
+  background: gold;
+  top: -15px;
+  left: 47px;
+  border-radius: 3px;
 }
 
 .flame {
   position: absolute;
-  top: -15px;
+  top: -12px;
   left: 50%;
   transform: translateX(-50%);
-  width: 12px;
-  height: 20px;
+  width: 10px;
+  height: 15px;
   background: orange;
-  border-radius: 50% 50% 20% 20%;
-  box-shadow: 0 0 20px orange;
+  border-radius: 50%;
+  box-shadow: 0 0 15px orange;
   animation: flicker 0.1s infinite alternate;
 }
 
-@keyframes flicker {
-  from { transform: translateX(-50%) scale(1); }
-  to { transform: translateX(-50%) scale(1.1) rotate(2deg); }
+.wish {
+  color: #ddd;
+  font-size: 1rem;
+  margin-top: 20px;
+  text-align: center;
+  min-height: 80px;
+  line-height: 1.6;
 }
 
-.wish { color: #eee; font-size: 0.95rem; margin-top: 15px; min-height: 60px; }
-.signature { font-family: 'Dancing Script', cursive; color: #d4af37; margin-top: 20px; font-size: 1.4rem; }
+.signature {
+  font-family: 'Dancing Script', cursive;
+  color: #d4af37;
+  margin-top: 15px;
+  font-size: 1.5rem;
+}
 
-.tap { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; opacity: 0.7; }
+/* --- CONFETTI --- */
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: gold;
+  top: -10px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Keep all your existing CSS and ADD/UPDATE these classes */
+
+/* --- GOLD BORDER FRAME --- */
+.border-frame {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 2px solid #d4af37;
+  pointer-events: none;
+  border-radius: 15px;
+}
+
+/* Creating the corner flourishes seen in your image */
+.border-frame::before,
+.border-frame::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 4px solid #d4af37;
+}
+
+.border-frame::before {
+  top: -5px;
+  left: -5px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.border-frame::after {
+  bottom: -5px;
+  right: -5px;
+  border-left: none;
+  border-top: none;
+}
+
+/* --- REAL CAKE IMAGE --- */
+.real-cake-img {
+  width: 140px;
+  height: auto;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+  margin-bottom: 10px;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* --- LAYOUT ADJUSTMENTS --- */
+.message-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 0 20px;
+}
+
+.wish {
+  font-size: 0.95rem;
+  color: #eee;
+  text-align: left;
+  line-height: 1.4;
+  max-width: 200px;
+}
+
+.mini-gift {
+  font-size: 2.5rem;
+  animation: rotateGift 4s infinite linear;
+}
+
+@keyframes rotateGift {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(10deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+/* Update Front Gift Box to look like the image */
+.front .gift-box {
+  background: #d4af37;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.inner-icon {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.gift-img-main {
+  width: 180px;
+  /* Adjusted size for your gold gift image */
+  height: auto;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5));
+  animation: pulseGift 2s infinite ease-in-out;
+}
+
+.real-cake-img {
+  width: 160px;
+  /* Adjusted size for your cake image */
+  height: auto;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6));
+  margin-bottom: 10px;
+}
+
+/* --- THE GOLD FRAME (Matching your uploaded design) --- */
+.border-frame {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border: 1.5px solid #d4af37;
+  pointer-events: none;
+  border-radius: 10px;
+}
+
+/* Corner Accents */
+.border-frame::before,
+.border-frame::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 3px solid #d4af37;
+}
+
+.border-frame::before {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.border-frame::after {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
+}
+
+/* --- TYPING AREA --- */
+.message-container {
+  padding: 0 25px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.wish {
+  font-size: 1rem;
+  color: #f0f0f0;
+  text-align: center;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes pulseGift {
+
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5));
+  }
+
+  50% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.8));
+  }
+}
